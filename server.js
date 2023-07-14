@@ -10,12 +10,14 @@ const image = require('./controllers/image');
 
 const db = knex({
   client: 'pg',
-  connection: {    
-    host : dpg-cio3qed9aq06u3mf3qkg-a.oregon-postgres.render.com,
+  connection: {
+    connectionString: process.env.DATABASE_URL,
+    ssl: {rejectUnauthorized: false},
+    host : process.env.DATABASE_HOST,
     port: 5432,
-    user : hedgehog_user,
-    password : '9t0muMkdWbQdSDsN13ClQu0Gdidpj3LX',
-    database : hedgehog
+    user : process.env.DATABASE_USER,
+    password : process.env.DATABASE_PW,
+    database : process.env.DATABASE_HOST
   }
 });
 
